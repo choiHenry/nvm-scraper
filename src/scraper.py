@@ -1,6 +1,3 @@
-import pandas as pd
-
-
 class Scraper:
 
     def __init__(self):
@@ -86,7 +83,9 @@ class Scraper:
             print(len(pclist), len(rvlist), len(starlist), len(datelist))
 
         data = pd.DataFrame(list(zip(pclist, rvlist, datelist, starlist)))
+        data.columns = ["product code", "review", "date", "score"]
         data.to_csv("naver-review.csv")
+        data.to_pickle("naver-review.pkl")
 
         return data
 
