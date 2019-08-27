@@ -1,8 +1,6 @@
 class Scraper:
 
     def __init__(self):
-        self.reviewList = []
-        self.scoreList = []
         self.pcodelist = []
 
     def getPCodeList(self, page):
