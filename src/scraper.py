@@ -86,6 +86,7 @@ class Scraper:
         data.columns = ["product code", "review", "date", "score"]
         data.to_csv("naver-review.csv")
         data.to_pickle("naver-review.pkl")
+        data.to_excel("naver-review.xlsx", sheet_name="sheet1")
 
         return data
 
