@@ -55,6 +55,7 @@ class Scraper:
             try:
                 review_num = a[0].findAll("em")[0].get_text().strip()
             except:
+                print("Linked to another mall. Terminate scraping for the product {}.".format(p))
                 continue
             page_num = (locale.atoi(review_num)//20) + 1
             rvurl = "https://search.shopping.naver.com/detail/review_list.nhn"
@@ -66,7 +67,8 @@ class Scraper:
                 try:
                     atc_areas = ul[0].findAll("div", attrs={"class": "atc_area"})
                 except:
-                    continue
+                    print("There's no review. Terminate scraping for the product {}.".format(p))
+                    break
                 for i in range(len(atc_areas)):
                     atc = atc_areas[i].findAll("div", attrs={"class":"atc"})
                     review = atc[0].get_text().strip()
